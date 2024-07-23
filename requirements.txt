@@ -1,6 +1,5 @@
 numpy==2.0.1
 opencv-python==4.10.0.84
-pillow==10.4.0
 pydub==0.25.1
 pyee==11.1.0
 python-ffmpeg==2.0.12
