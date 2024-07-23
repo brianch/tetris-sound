@@ -5,7 +5,7 @@ a = Analysis(
     ['tetris_sound.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[ ('nes.mp3', '.') ],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
