@@ -1,3 +1,4 @@
+import os
 import numpy as np
 import cv2 as cv
 #import soundfile as sf
@@ -21,6 +22,15 @@ def choose_pixel(event,x,y,flags,param):
     if event == cv.EVENT_LBUTTONUP:
         pixel = [x, y]
         print(f"clicked in {pixel}")
+
+def resource_path(relative_path):
+    try:
+        # PyInstaller creates a temp folder and stores path in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 if __name__ == "__main__":
     root = Tk()
@@ -89,7 +99,8 @@ if __name__ == "__main__":
     video.release()
     cv.destroyAllWindows()
 
-    song = AudioSegment.from_file("nes.mp3")
+    print(resource_path("nes.mp3"))
+    song = AudioSegment.from_file(resource_path("nes.mp3"))
     final_audio = AudioSegment.empty()
     prev_timestamp = 0
     for time in timestamps:
