@@ -104,7 +104,7 @@ if __name__ == "__main__":
     video.release()
     cv.destroyAllWindows()
 
-    print(f"reading tetris audio effect from file {resource_path("nes.mp3")}")
+    print(f"reading tetris audio effect from file {resource_path('nes.mp3')}")
     song = AudioSegment.from_file(resource_path("nes.mp3"))
     final_audio = AudioSegment.empty()
     prev_timestamp = 0
@@ -113,7 +113,7 @@ if __name__ == "__main__":
         final_audio += song
         prev_timestamp = time + len(song)
 
-    print(f"writing audio track to file {resource_path("final.mp3")}...")
+    print(f"writing audio track to file {resource_path('final.mp3')}...")
     file_handle = final_audio.export(resource_path("final.mp3"), format="mp3")
 
     print(f"starting ffmpeg. Will write to {output_dir}video_with_tetris_sound_effect.mp4")
