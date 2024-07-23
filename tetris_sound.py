@@ -13,9 +13,14 @@ from ffmpeg import FFmpeg
 
 pixel = [0, 0]
 video_file = None
+output_dir = ""
 
 def choose_video():
+    global output_dir
     video_file.set(fd.askopenfilename())
+    output_dir = os.path.join(os.path.dirname(video_file.get()), '')
+    print(output_dir)
+
 
 def choose_pixel(event,x,y,flags,param):
     global pixel
@@ -99,7 +104,7 @@ if __name__ == "__main__":
     video.release()
     cv.destroyAllWindows()
 
-    print(resource_path("nes.mp3"))
+    print(f"reading tetris audio effect from file {resource_path("nes.mp3")}")
     song = AudioSegment.from_file(resource_path("nes.mp3"))
     final_audio = AudioSegment.empty()
     prev_timestamp = 0
@@ -108,15 +113,17 @@ if __name__ == "__main__":
         final_audio += song
         prev_timestamp = time + len(song)
 
-    file_handle = final_audio.export("final.mp3", format="mp3")
+    print(f"writing audio track to file {resource_path("final.mp3")}...")
+    file_handle = final_audio.export(resource_path("final.mp3"), format="mp3")
 
+    print(f"starting ffmpeg. Will write to {output_dir}video_with_tetris_sound_effect.mp4")
     ffmpeg = (
         FFmpeg()
         .option("y")
         .input(video_file.get())
-        .input("final.mp3")
+        .input(resource_path("final.mp3"))
         .output(
-            "output.mp4",
+            output_dir + "video_with_tetris_sound_effect.mp4",
             {"codec:v": "copy"},
             map=["0:0", "1:0"],
             #map=["0:0", "1:1"],
