@@ -33,4 +33,4 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: tetris_sound.exe
-          path: dist/windows
+          path: dist/tetris_sound.exe
