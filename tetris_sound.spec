@@ -6,7 +6,7 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        ('nes.mp3', '.')
+        ('nes.mp3', '.'),
         ('eng.traineddata', '.')
     ],
     hiddenimports=[],
