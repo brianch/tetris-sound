@@ -13,9 +13,9 @@ Reads a NES Tetris video and adds only the Tetris sound effect.
 
 ### Running
 
-An initial version, only with the flashing detection method, is available [here](https://github.com/brianch/tetris-sound/actions/runs/10062817898), the later builds aren't working yet (they are not bundling everything needed). 
+The windows executable should be available [here](https://github.com/brianch/tetris-sound/actions) (click on on the most recent green ticked link and scroll to the bottom of the page, download requires github login.
 
-If you want to run it from the python file, install tesserocr, download the repository and run:
+If you want to run it from the python file, install tesserocr, download the repository and inside the directory run:
 
 ```
 python3 -m venv venv
