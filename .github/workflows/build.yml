@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - uses: conda-incubator/setup-miniconda@v3
@@ -22,12 +22,13 @@ jobs:
         run: conda install -c simonflueckiger tesserocr
       - uses: actions/checkout@v4
       - name: PyInstaller Windows
-        uses: JackMcKew/pyinstaller-action-windows@main
+        uses: sayyid5416/pyinstaller@v1
         with:
+          spec: 'tetris_sound.spec'
           options: --onefile
-          path: .
+          upload_exe_with_name: 'tetris_sound'
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: tetris_sound.exe
-          path: dist/windows
+      #- uses: actions/upload-artifact@v4
+      #  with:
+      #    name: tetris_sound.exe
+      #    path: dist/windows
