@@ -4,10 +4,7 @@
 a = Analysis(
     ['tetris_sound.py'],
     pathex=[],
-    binaries=[
-        ('ffmpeg.exe', '.'),
-        ('ffprobe.exe', '.')
-    ],
+    binaries=[],
     datas=[('nes.mp3', '.')],
     hiddenimports=[],
     hookspath=[],
