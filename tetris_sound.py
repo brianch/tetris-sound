@@ -70,6 +70,7 @@ def click_flashing_pixel(event,x,y,flags,param):
         print(f"clicked in {flashing_pixel}")
 
 def opencv_pick_flashing_pixel(video):
+    curr_frame = 0
     ret, frame = video.read()
     cv.imshow("pick_pixel", frame)
     cv.setMouseCallback("pick_pixel",click_flashing_pixel)
