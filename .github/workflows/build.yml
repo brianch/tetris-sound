@@ -21,14 +21,16 @@ jobs:
       - name: Install tesserocr
         run: conda install -c simonflueckiger tesserocr
       - uses: actions/checkout@v4
-      - name: PyInstaller Windows
-        uses: sayyid5416/pyinstaller@v1
+      - name: Prepare build
+        run: |
+          python3 -m venv venv
+          venv\Scripts\activate.bat
+          pip install -r requirements.txt
+      - name: Run pyinstaller
+        run: |
+          pip install -U pyinstaller
+          pyinstaller -y --onefile --clean tetris_sound.spec
+      - uses: actions/upload-artifact@v4
         with:
-          spec: 'tetris_sound.spec'
-          options: --onefile
-          upload_exe_with_name: 'tetris_sound'
-
-      #- uses: actions/upload-artifact@v4
-      #  with:
-      #    name: tetris_sound.exe
-      #    path: dist/windows
+          name: tetris_sound.exe
+          path: dist/windows
